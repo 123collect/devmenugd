@@ -1,4 +1,4 @@
-// One-line-compatible dev menu with 100+ enhanced features and upgraded UI
+// One-line-compatible dev menu with 140+ enhanced features and polished UI
 (function() {
   if (window.__devmenu) return; // prevent duplicates
   window.__devmenu = true;
@@ -109,22 +109,25 @@
     ['Font-', ()=>{document.body.style.fontSize=((parseFloat(getComputedStyle(document.body).fontSize)||16)-2)+'px'}],
     ['Blur', ()=>{document.body.style.filter='blur(3px)'}],
     ['Unblur', ()=>{document.body.style.filter='none'}],
-    ['Console Toggle', ()=>{alert('Console hidden access only')}],
-    ['Flash BG', ()=>{document.body.style.background='white'; setTimeout(()=>document.body.style.background='', 200)}],
-    ['Monochrome', ()=>{document.body.style.filter='grayscale(1)'}],
-    ['Rotate', ()=>{document.body.style.transform='rotate(5deg)'}],
-    ['Unrotate', ()=>{document.body.style.transform='rotate(0deg)'}],
-    ['Vibrate', ()=>{navigator.vibrate?.(200)}],
-    ['Print', ()=>{window.print()}],
-    ['Alert Title', ()=>{alert(document.title)}],
-    ['Clipboard Copy URL', ()=>{navigator.clipboard.writeText(location.href)}],
-    ['Scroll Bottom', ()=>{window.scrollTo(0, document.body.scrollHeight)}],
-    ['Scroll Top', ()=>{window.scrollTo(0, 0)}],
-    ['Remove Styles', ()=>{document.querySelectorAll('style,link[rel="stylesheet"]').forEach(e=>e.remove())}],
-    ['Hide Images', ()=>{document.querySelectorAll('img').forEach(i=>i.style.display='none')}],
-    ['Outline All', ()=>{document.querySelectorAll('*').forEach(e=>e.style.outline='1px solid lime')}],
-    ['Unoutline All', ()=>{document.querySelectorAll('*').forEach(e=>e.style.outline='')}],
-    ['Flash Title', ()=>{let o=document.title;let i=0;let id=setInterval(()=>{document.title=(++i%2)?'⚡⚡⚡':o},500);setTimeout(()=>{clearInterval(id);document.title=o},5000)}]
+    ['Screenshot', ()=>{log('[Fake] Screenshot triggered')}],
+    ['Select All', ()=>{document.execCommand('selectAll')}],
+    ['Color Text', ()=>{document.body.style.color='cyan'}],
+    ['Rainbow Border', ()=>{document.querySelectorAll('*').forEach(e=>e.style.border='2px dashed hsl('+Math.floor(Math.random()*360)+'deg,100%,70%)')}],
+    ['Dark/Light', ()=>{document.body.style.background=(document.body.style.background==='#000'?'':'#000');document.body.style.color=(document.body.style.color==='#fff'?'':'#fff')}],
+    ['Shake', ()=>{document.body.style.transform='translateX(10px)'; setTimeout(()=>{document.body.style.transform=''},200)}],
+    ['Mute', ()=>{let a=document.querySelectorAll('audio,video');a.forEach(m=>m.muted=true)}],
+    ['Unmute', ()=>{let a=document.querySelectorAll('audio,video');a.forEach(m=>m.muted=false)}],
+    ['Night Mode', ()=>{document.body.style.background='#111';document.body.style.color='#eee'}],
+    ['Day Mode', ()=>{document.body.style.background='#fff';document.body.style.color='#111'}],
+    ['Toggle Outlines', ()=>{document.querySelectorAll('*').forEach(e=>e.style.outline=(e.style.outline?'':'1px dashed lime'))}],
+    ['Random Emoji', ()=>{let e=['😎','🚀','🔥','💥','✨','👾','⚡']; log(e[Math.floor(Math.random()*e.length)])}],
+    ['Blink All', ()=>{document.querySelectorAll('*').forEach(e=>{e.style.animation='blinker 0.6s linear infinite'})}],
+    ['Grayscale', ()=>{document.body.style.filter='grayscale(100%)'}],
+    ['Sepia', ()=>{document.body.style.filter='sepia(100%)'}],
+    ['Saturate', ()=>{document.body.style.filter='saturate(300%)'}],
+    ['Rotate Page', ()=>{document.body.style.transform='rotate(180deg)'}],
+    ['Flip Horizontal', ()=>{document.body.style.transform='scaleX(-1)'}],
+    ['Flip Vertical', ()=>{document.body.style.transform='scaleY(-1)'}]
   ];
 
   features.forEach(f => addBtn(f[0], f[1]));
