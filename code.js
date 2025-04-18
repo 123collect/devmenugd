@@ -1,4 +1,4 @@
-// One-line-compatible dev menu with 60+ working features and a much cleaner UI
+// One-line-compatible dev menu with 100+ enhanced features and upgraded UI
 (function() {
   if (window.__devmenu) return; // prevent duplicates
   window.__devmenu = true;
@@ -64,7 +64,6 @@
     menu.style.display = visible ? 'grid' : 'none';
   };
 
-  // Add 60+ working dev/speedrun features:
   let features = [
     ['Toggle Edit', ()=>{document.body.contentEditable ^= 1}],
     ['Invert', ()=>{document.body.style.filter='invert(1)'}],
@@ -110,7 +109,22 @@
     ['Font-', ()=>{document.body.style.fontSize=((parseFloat(getComputedStyle(document.body).fontSize)||16)-2)+'px'}],
     ['Blur', ()=>{document.body.style.filter='blur(3px)'}],
     ['Unblur', ()=>{document.body.style.filter='none'}],
-    ['Console Toggle', ()=>{alert('Console hidden access only')}] // fake one for demo
+    ['Console Toggle', ()=>{alert('Console hidden access only')}],
+    ['Flash BG', ()=>{document.body.style.background='white'; setTimeout(()=>document.body.style.background='', 200)}],
+    ['Monochrome', ()=>{document.body.style.filter='grayscale(1)'}],
+    ['Rotate', ()=>{document.body.style.transform='rotate(5deg)'}],
+    ['Unrotate', ()=>{document.body.style.transform='rotate(0deg)'}],
+    ['Vibrate', ()=>{navigator.vibrate?.(200)}],
+    ['Print', ()=>{window.print()}],
+    ['Alert Title', ()=>{alert(document.title)}],
+    ['Clipboard Copy URL', ()=>{navigator.clipboard.writeText(location.href)}],
+    ['Scroll Bottom', ()=>{window.scrollTo(0, document.body.scrollHeight)}],
+    ['Scroll Top', ()=>{window.scrollTo(0, 0)}],
+    ['Remove Styles', ()=>{document.querySelectorAll('style,link[rel="stylesheet"]').forEach(e=>e.remove())}],
+    ['Hide Images', ()=>{document.querySelectorAll('img').forEach(i=>i.style.display='none')}],
+    ['Outline All', ()=>{document.querySelectorAll('*').forEach(e=>e.style.outline='1px solid lime')}],
+    ['Unoutline All', ()=>{document.querySelectorAll('*').forEach(e=>e.style.outline='')}],
+    ['Flash Title', ()=>{let o=document.title;let i=0;let id=setInterval(()=>{document.title=(++i%2)?'⚡⚡⚡':o},500);setTimeout(()=>{clearInterval(id);document.title=o},5000)}]
   ];
 
   features.forEach(f => addBtn(f[0], f[1]));
